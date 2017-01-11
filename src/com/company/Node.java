@@ -18,7 +18,7 @@ public class Node {
     public Node(Node parent, int[][] state){
         this.parent = parent;
         this.currentState = new State(state);
-        this.children = generateSuccessors();
+//        this.children = generateSuccessors();
 //        this.action = action;
 //        this.depth = depth;
 //        this.pathCost = pathCost;

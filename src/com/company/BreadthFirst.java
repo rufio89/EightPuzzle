@@ -22,13 +22,14 @@ public class BreadthFirst {
         Node current = new Node(initial);
         visited.add(current);
         queue.add(current);
-
+        current.getCurrentState().printCurrentState();
 
 
         while(queue.size()!=0){
-            adj.addAll(current.getChildren());
             current = queue.poll();
-            current.getCurrentState().printCurrentState();
+            current.generateSuccessors();
+            adj.addAll(current.getChildren());
+
 
             for(int i=0;i<adj.size();i++){
                 if(!visited.contains(adj.get(i))){

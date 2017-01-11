@@ -29,10 +29,10 @@ public class State {
         for(int i=0;i<dimension;i++){
             for(int j=0;j<dimension;j++){
                 result[i][j] = initial[counter];
-                System.out.print(result[i][j] + " ");
+                //System.out.print(result[i][j] + " ");
                 counter++;
             }
-            System.out.println();
+            //System.out.println();
         }
 
         return result;
