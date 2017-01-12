@@ -35,6 +35,10 @@ public class Node {
 //        this.expanded = expanded;
     }
 
+    public Node getParent(){
+        return this.parent;
+    }
+
     public State getCurrentState(){
         return this.currentState;
     }
@@ -54,7 +58,7 @@ public class Node {
         if(right!=null)  children.add(new Node(this, right));
         if(up!=null)  children.add(new Node(this,up));
         if(down!=null)  children.add(new Node(this,down));
-        //printChildren(children);
+        this.children = children;
         return children;
     }
 
@@ -109,6 +113,15 @@ public class Node {
             return null;
         }
         return state;
+    }
+
+    public boolean equals(Node n){
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++) {
+                if (this.currentState.getCurrentState()[i][j]!=n.currentState.getCurrentState()[i][j]) return false;
+            }
+        }
+        return true;
     }
 
 }

@@ -61,6 +61,7 @@ public class State {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
 
@@ -92,6 +93,7 @@ public class State {
                     if(currentState[i][j]!=goalState[counter]) {
                         return false;
                     }
+                counter++;
             }
         }
         return true;
