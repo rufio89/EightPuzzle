@@ -20,6 +20,7 @@ public class HashTable<Key, Value> {
         return hash;
     }
 
+
     public Value insert(Key key, Value data){
         int hash = getIndex(key);
 

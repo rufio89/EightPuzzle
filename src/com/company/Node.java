@@ -8,31 +8,26 @@ import java.util.ArrayList;
 public class Node {
     private Node parent = null;
     private State currentState;
-    private ArrayList<Node> children;
     private String action;
     private int depth;
     private int pathCost;
     private boolean expanded;
 
 
-    public Node(Node parent, int[][] state){
+    public Node(Node parent, int[][] state, String action, int depth, boolean expanded){
         this.parent = parent;
         this.currentState = new State(state);
-//        this.children = generateSuccessors();
-//        this.action = action;
-//        this.depth = depth;
-//        this.pathCost = pathCost;
-//        this.expanded = expanded;
+        this.action = action;
+        this.depth = depth;
+        this.pathCost = 1;
+        this.expanded = expanded;
     }
 
     public Node(int[] state){
 
         this.currentState = new State(state);
-        this.children = generateSuccessors();
-//        this.action = action;
-//        this.depth = depth;
-//        this.pathCost = pathCost;
-//        this.expanded = expanded;
+        this.depth = 0;
+
     }
 
     public Node getParent(){
@@ -43,9 +38,6 @@ public class Node {
         return this.currentState;
     }
 
-    public ArrayList<Node> getChildren(){
-        return this.children;
-    }
 
     public ArrayList<Node> generateSuccessors(){
         ArrayList<Node> children = new ArrayList<>();
@@ -54,26 +46,27 @@ public class Node {
         int[][] up = generateUp(currentState.getCurrentState());
         int[][] down = generateDown(currentState.getCurrentState());
 
-        if(left!=null)  children.add(new Node(this, left));
-        if(right!=null)  children.add(new Node(this, right));
-        if(up!=null)  children.add(new Node(this,up));
-        if(down!=null)  children.add(new Node(this,down));
-        this.children = children;
+        if(left!=null)  children.add(new Node(this, left, "left", this.depth+1, true));
+        if(right!=null)  children.add(new Node(this, right, "right", this.depth+1, true));
+        if(up!=null)  children.add(new Node(this,up, "up", this.depth+1, true));
+        if(down!=null)  children.add(new Node(this,down, "down", this.depth+1, true));
+
+
+
+
         return children;
     }
 
-    public void printChildren(ArrayList<State> children){
-        for(int i=0;i<children.size();i++){
-            children.get(i).printCurrentState();
-            System.out.println();
-        }
-    }
+
+
+
 
     public int[][] generateLeft(int[][] state){
         if(currentState.getjHole()!=0){
             int previous = state[currentState.getiHole()][currentState.getjHole()-1];
             state[currentState.getiHole()][currentState.getjHole()] = previous;
             state[currentState.getiHole()][currentState.getjHole()-1] = 0;
+
         }
         else{
             return null;
@@ -85,6 +78,7 @@ public class Node {
             int previous = state[currentState.getiHole()][currentState.getjHole()+1];
             state[currentState.getiHole()][currentState.getjHole()] = previous;
             state[currentState.getiHole()][currentState.getjHole()+1] = 0;
+
         }
         else{
             return null;
@@ -97,6 +91,7 @@ public class Node {
             int previous = state[currentState.getiHole()-1][currentState.getjHole()];
             state[currentState.getiHole()][currentState.getjHole()] = previous;
             state[currentState.getiHole()-1][currentState.getjHole()] = 0;
+
         }
         else{
             return null;
@@ -108,6 +103,7 @@ public class Node {
             int previous = state[currentState.getiHole()+1][currentState.getjHole()];
             state[currentState.getiHole()][currentState.getjHole()] = previous;
             state[currentState.getiHole()+1][currentState.getjHole()] = 0;
+
         }
         else{
             return null;
@@ -122,6 +118,21 @@ public class Node {
             }
         }
         return true;
+    }
+    public void setAction(String action){
+        this.action = action;
+    }
+
+    public String getAction(){
+        return this.action;
+    }
+
+    public int getPathCost(){
+        return this.pathCost;
+    }
+
+    public int getDepth(){
+        return this.depth;
     }
 
 }

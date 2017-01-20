@@ -8,9 +8,11 @@ public class Solver {
 
 
 
-    public Solver(int[] initial){
-        BreadthFirst bfs = new BreadthFirst(initial);
+    public Solver(int[] initial, int[] goal){
+        BreadthFirst bfs = new BreadthFirst(initial, goal);
         bfs.run();
+ //       DepthFirst dfs = new DepthFirst(initial, goal);
+ //       dfs.run();
 
     }
 
