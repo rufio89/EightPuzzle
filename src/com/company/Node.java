@@ -1,11 +1,12 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by ryan on 1/8/17.
  */
-public class Node {
+public class Node{
     private Node parent = null;
     private State currentState;
     private String action;
@@ -116,14 +117,7 @@ public class Node {
         return newState;
     }
 
-    public boolean equals(Node n){
-        for(int i=0;i<3;i++){
-            for(int j=0;j<3;j++) {
-                if (this.currentState.getCurrentState()[i][j]!=n.currentState.getCurrentState()[i][j]) return false;
-            }
-        }
-        return true;
-    }
+
     public void setAction(String action){
         this.action = action;
     }

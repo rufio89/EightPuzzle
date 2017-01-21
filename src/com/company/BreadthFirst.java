@@ -56,18 +56,11 @@ public class BreadthFirst{
         return false;
     }
 
-    public boolean frontierContains(Node n, Queue<Node> queue){
-        LinkedList<Node> check = new LinkedList<>(queue);
-        for(int i=1;i<check.size();i++){
-            if(check.get(i).equals(n)) return true;
-        }
-        return false;
-    }
 
 
     //RUNS BFS ON THE TREE AS IT BUILDS
     public void run(){
-        LinkedList<Node> visited = new LinkedList<Node>();
+        Set<State> visited = new HashSet<State>();
         Queue<Node> queue = new LinkedList<Node>();
         Node current = new Node(initial);
         if(current.getCurrentState().isGoal()){
@@ -80,17 +73,17 @@ public class BreadthFirst{
         while(queue.size()!=0){
 
             current = queue.poll();
-            visited.add(current);
+            visited.add(current.getCurrentState());
             //current.getCurrentState().printCurrentState();
 
             ArrayList<Node> children = current.generateSuccessors();
             for(int i=0;i<children.size();i++){
                 Node child = children.get(i);
-                boolean contains = containsBoard(child,visited);
-                boolean frontierContains = frontierContains(child,queue);
+                boolean contains = visited.contains(child.getCurrentState());
+
                 //System.out.println("VISITED : " + contains);
                 //System.out.println("FrontierQueue: " + contains);
-                if(! (contains || frontierContains)){
+                if(! (contains )){
                     if(child.getCurrentState().isGoal()){
                         System.out.println("FOUND");
                         current = child;

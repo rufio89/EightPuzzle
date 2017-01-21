@@ -73,6 +73,30 @@ public class State {
         System.out.println();
     }
 
+    @Override
+    public String toString(){
+        int counter = 0;
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<currentState.length;i++){
+            for(int j=0;j<currentState.length;j++){
+                sb.append(currentState[i][j] + " ");
+                counter++;
+            }
+        }
+        return sb.toString();
+    }
+
+
+    public boolean equals(Object o) {
+        if (Arrays.deepEquals(this.getCurrentState(),((State)o).getCurrentState())) return true;
+        else return false;
+    }
+
+    public int hashCode(){
+        return this.toString().hashCode();
+    }
+
+
 
 
     public void getHole(){

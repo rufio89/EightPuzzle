@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by ryan on 1/16/17.
@@ -51,18 +48,11 @@ public class DepthFirst {
         System.out.println("Path Cost: " + totalCost);
     }
 
-    //CHECKS TO SEE IF THE VISITED LIST CONTAINS THE BOARD YOU PASS IN
-    public boolean containsBoard(Node n, LinkedList<Node> list){
-        for(int i=1;i<list.size();i++){
-            if(list.get(i).equals(n)) return true;
-        }
-        return false;
-    }
 
 
     //RUNS BFS ON THE TREE AS IT BUILDS
     public void run(){
-        LinkedList<Node> visited = new LinkedList<Node>();
+        Set<State> visited = new HashSet<State>();
         LinkedList<Node> queue = new LinkedList<Node>();
         Node current = new Node(initial);
         if(current.getCurrentState().isGoal()){
@@ -75,13 +65,13 @@ public class DepthFirst {
         while(queue.size()!=0){
 
             current = queue.poll();
-            visited.addFirst(current);
+            visited.add(current.getCurrentState());
             //current.getCurrentState().printCurrentState();
 
             ArrayList<Node> children = current.generateSuccessors();
             for(int i=0;i<children.size();i++){
                 Node child = children.get(i);
-                boolean contains = containsBoard(child,visited);
+                boolean contains = visited.contains(child.getCurrentState());
                 //System.out.println(contains);
                 if(!contains){
                     if(child.getCurrentState().isGoal()){
