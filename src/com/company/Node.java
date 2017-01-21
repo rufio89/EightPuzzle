@@ -14,13 +14,13 @@ public class Node {
     private boolean expanded;
 
 
-    public Node(Node parent, int[][] state, String action, int depth, boolean expanded){
+    public Node(Node parent, State state, String action, int depth, boolean expanded, int pathCost){
         this.parent = parent;
-        this.currentState = new State(state);
+        this.currentState = state;
         this.action = action;
         this.depth = depth;
-        this.pathCost = 1;
         this.expanded = expanded;
+        this.pathCost = pathCost;
     }
 
     public Node(int[] state){
@@ -41,15 +41,15 @@ public class Node {
 
     public ArrayList<Node> generateSuccessors(){
         ArrayList<Node> children = new ArrayList<>();
-        int[][] left = generateLeft(currentState.getCurrentState());
-        int[][] right = generateRight(currentState.getCurrentState());
-        int[][] up = generateUp(currentState.getCurrentState());
-        int[][] down = generateDown(currentState.getCurrentState());
+        State left = generateLeft(currentState);
+        State right = generateRight(currentState);
+        State up = generateUp(currentState);
+        State down = generateDown(currentState);
 
-        if(left!=null)  children.add(new Node(this, left, "left", this.depth+1, true));
-        if(right!=null)  children.add(new Node(this, right, "right", this.depth+1, true));
-        if(up!=null)  children.add(new Node(this,up, "up", this.depth+1, true));
-        if(down!=null)  children.add(new Node(this,down, "down", this.depth+1, true));
+        if(left!=null)  children.add(new Node(this, left, "left", this.depth+1, true, left.getTileMoved()));
+        if(right!=null)  children.add(new Node(this, right, "right", this.depth+1, true, right.getTileMoved()));
+        if(up!=null)  children.add(new Node(this,up, "up", this.depth+1, true, up.getTileMoved()));
+        if(down!=null)  children.add(new Node(this,down, "down", this.depth+1, true, down.getTileMoved()));
 
 
 
@@ -61,54 +61,59 @@ public class Node {
 
 
 
-    public int[][] generateLeft(int[][] state){
-        if(currentState.getjHole()!=0){
-            int previous = state[currentState.getiHole()][currentState.getjHole()-1];
-            state[currentState.getiHole()][currentState.getjHole()] = previous;
-            state[currentState.getiHole()][currentState.getjHole()-1] = 0;
+    public State generateLeft(State state){
+        State newState = new State(state.getCurrentState());
+        if(newState.getjHole()!=0){
+            int previous = newState.getCurrentState()[newState.getiHole()][newState.getjHole()-1];
+            newState.setCurrentState(newState.getiHole(),newState.getjHole(),previous);
+            newState.setCurrentState(newState.getiHole(),newState.getjHole()-1, 0);
+            newState.setTileMoved(previous);
 
         }
         else{
             return null;
         }
-        return state;
+        return newState;
     }
-    public int[][] generateRight(int[][] state){
-        if(currentState.getjHole()!=2){
-            int previous = state[currentState.getiHole()][currentState.getjHole()+1];
-            state[currentState.getiHole()][currentState.getjHole()] = previous;
-            state[currentState.getiHole()][currentState.getjHole()+1] = 0;
-
+    public State generateRight(State state){
+        State newState = new State(state.getCurrentState());
+        if(newState.getjHole()!=2){
+            int previous = newState.getCurrentState()[newState.getiHole()][newState.getjHole()+1];
+            newState.setCurrentState(newState.getiHole(),newState.getjHole(),previous);
+            newState.setCurrentState(newState.getiHole(),newState.getjHole()+1, 0);
+            newState.setTileMoved(previous);
         }
         else{
             return null;
         }
-        return state;
+        return newState;
     }
 
-    public int[][] generateUp(int[][] state){
-        if(currentState.getiHole()!=0){
-            int previous = state[currentState.getiHole()-1][currentState.getjHole()];
-            state[currentState.getiHole()][currentState.getjHole()] = previous;
-            state[currentState.getiHole()-1][currentState.getjHole()] = 0;
-
+    public State generateUp(State state){
+        State newState = new State(state.getCurrentState());
+        if(newState.getiHole()!=0){
+            int previous = newState.getCurrentState()[newState.getiHole()-1][newState.getjHole()];
+            newState.setCurrentState(newState.getiHole(),newState.getjHole(),previous);
+            newState.setCurrentState(newState.getiHole()-1,newState.getjHole(), 0);
+            newState.setTileMoved(previous);
         }
         else{
             return null;
         }
-        return state;
+        return newState;
     }
-    public int[][] generateDown(int[][] state){
-        if(currentState.getiHole()!=2){
-            int previous = state[currentState.getiHole()+1][currentState.getjHole()];
-            state[currentState.getiHole()][currentState.getjHole()] = previous;
-            state[currentState.getiHole()+1][currentState.getjHole()] = 0;
-
+    public State generateDown(State state){
+        State newState = new State(state.getCurrentState());
+        if(newState.getiHole()!=2){
+            int previous = newState.getCurrentState()[newState.getiHole()+1][newState.getjHole()];
+            newState.setCurrentState(newState.getiHole(),newState.getjHole(),previous);
+            newState.setCurrentState(newState.getiHole()+1,newState.getjHole(),0);
+            newState.setTileMoved(previous);
         }
         else{
             return null;
         }
-        return state;
+        return newState;
     }
 
     public boolean equals(Node n){

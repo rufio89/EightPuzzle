@@ -11,6 +11,7 @@ public class State {
     private int iHole;
     private int jHole;
     private int[] goalState = {1,2,3,8,0,4,7,6,5};
+    private int tileMoved;
 
     public State(int[] state){
         this.currentState = generateBoard(state);
@@ -48,8 +49,16 @@ public class State {
         return current;
     }
 
-    public void setCurrentState(int[][] state){
-        this.currentState = state;
+    public void setCurrentState(int i, int j, int newValue){
+        this.currentState[i][j] = newValue;
+    }
+
+    public void setTileMoved(int tile){
+        this.tileMoved = tile;
+    }
+
+    public int getTileMoved(){
+        return this.tileMoved;
     }
 
     public void printCurrentState(){

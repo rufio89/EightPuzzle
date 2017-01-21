@@ -13,6 +13,7 @@ public class DepthFirst {
     int[] initial;
     Node init;
     Node goal;
+    int totalCost = 0;
 
     public DepthFirst(int[] initial, int[] goal){
         this.initial = initial;
@@ -26,6 +27,7 @@ public class DepthFirst {
     public void printPath(Node item){
         Node current = item;
         Stack<Node> path = new Stack<Node>();
+
         while(current.getParent()!=null){
             path.push(current);
             current = current.getParent();
@@ -37,7 +39,8 @@ public class DepthFirst {
         System.out.println("  V  ");
         while(!path.isEmpty()){
             current = path.pop();
-            System.out.println(current.getAction());
+            totalCost = totalCost + current.getPathCost();
+            System.out.println("ACTION: "  +current.getAction() + ", Cost: " + current.getPathCost() + ", Total Cost:" + totalCost + ", Depth: " + current.getDepth());
             current.getCurrentState().printCurrentState();
             if(path.size()>0) {
                 System.out.println("  |  ");
@@ -45,8 +48,7 @@ public class DepthFirst {
                 System.out.println("  V  ");
             }
         }
-
-
+        System.out.println("Path Cost: " + totalCost);
     }
 
     //CHECKS TO SEE IF THE VISITED LIST CONTAINS THE BOARD YOU PASS IN

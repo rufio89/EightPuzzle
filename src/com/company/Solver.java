@@ -9,10 +9,12 @@ public class Solver {
 
 
     public Solver(int[] initial, int[] goal){
-        BreadthFirst bfs = new BreadthFirst(initial, goal);
-        bfs.run();
- //       DepthFirst dfs = new DepthFirst(initial, goal);
- //       dfs.run();
+//        BreadthFirst bfs = new BreadthFirst(initial, goal);
+//        bfs.run();
+//       DepthFirst dfs = new DepthFirst(initial, goal);
+//       dfs.run();
+        IterativeDeepening id = new IterativeDeepening(initial,goal);
+        id.run();
 
     }
 
