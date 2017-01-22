@@ -6,7 +6,7 @@ import java.util.Arrays;
 /**
  * Created by ryan on 1/8/17.
  */
-public class Node{
+public class Node implements Comparable<Node>{
     private Node parent = null;
     private State currentState;
     private String action;
@@ -118,9 +118,7 @@ public class Node{
     }
 
 
-    public void setAction(String action){
-        this.action = action;
-    }
+
 
     public String getAction(){
         return this.action;
@@ -132,6 +130,16 @@ public class Node{
 
     public int getDepth(){
         return this.depth;
+    }
+
+    public boolean equals(Node n){
+        return this.getCurrentState().equals(n.getCurrentState());
+    }
+
+    public int compareTo(Node n){
+        if(this.equals(n)) return 0;
+        else if(this.getPathCost() > n.getPathCost()) return 1;
+        else return -1;
     }
 
 }

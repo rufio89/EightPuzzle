@@ -8,7 +8,7 @@ public class Main {
         int[] initialEasy = {1,3,4,8,6,2,7,0,5};
 
         int[] goal = {1,2,3,8,0,4,7,6,5};
-        Solver s = new Solver(initialHard, goal);
+        Solver s = new Solver(initialHard, goal, "bfs");
     }
 
 

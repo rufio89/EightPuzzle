@@ -1,18 +1,18 @@
 package com.company;
 
 import java.util.*;
-import java.util.Hashtable;
+
 /**
- * Created by ryan on 1/8/17.
+ * Created by ryan on 1/21/17.
  */
-public class BreadthFirst{
+public class UniformCostSearch {
 
     int[] initial;
     Node init;
     Node goal;
     int totalCost = 0;
 
-    public BreadthFirst(int[] initial, int[] goal){
+    public UniformCostSearch(int[] initial, int[] goal){
         this.initial = initial;
         this.init = new Node(initial);
         this.goal = new Node(goal);
@@ -51,44 +51,51 @@ public class BreadthFirst{
 
 
 
-    //RUNS BFS ON THE TREE AS IT BUILDS
+
     public void run(){
-        Set<State> visited = new HashSet<State>();
-        Queue<Node> queue = new LinkedList<Node>();
+        Set<State> visited = new HashSet<>();
+        PriorityQueue<Node> queue = new PriorityQueue<>();
         Node current = new Node(initial);
-        if(current.getCurrentState().isGoal()){
-            System.out.println("FOUND");
-            printPath(current);
-            return;
-        }
+
         queue.add(current);
 
         while(queue.size()!=0){
 
             current = queue.poll();
+            if(current.getCurrentState().isGoal()){
+                System.out.println("FOUND");
+                printPath(current);
+                return;
+            }
             visited.add(current.getCurrentState());
             //current.getCurrentState().printCurrentState();
 
+
             ArrayList<Node> children = current.generateSuccessors();
+            children.sort(Comparator.comparing(Node::getPathCost));
             for(int i=0;i<children.size();i++){
                 Node child = children.get(i);
                 boolean contains = visited.contains(child.getCurrentState());
-
+                boolean frontierContains = queue.contains(child);
                 //System.out.println("VISITED : " + contains);
-                //System.out.println("FrontierQueue: " + contains);
-                if(! (contains )){
+                //System.out.println("Frontier Contains: " + frontierContains);
+                if(! (contains || frontierContains)){
                     if(child.getCurrentState().isGoal()){
-                        System.out.println("FOUND");
                         current = child;
                         printPath(current);
                         return;
                     }
                     queue.add(child);
                 }
+                else if(frontierContains){
+                    queue.remove(child);
+                    queue.add(child);
+
+                }
             }
 
-
             System.out.println("QUEUE: "  + queue.size());
+
 
 
 

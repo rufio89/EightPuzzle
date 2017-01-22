@@ -50,7 +50,7 @@ public class DepthFirst {
 
 
 
-    //RUNS BFS ON THE TREE AS IT BUILDS
+    //RUNS DFS ON THE TREE AS IT BUILDS
     public void run(){
         Set<State> visited = new HashSet<State>();
         LinkedList<Node> queue = new LinkedList<Node>();
@@ -85,7 +85,7 @@ public class DepthFirst {
             }
 
 
-            //System.out.println("QUEUE: "  + queue.size());
+            System.out.println("QUEUE: "  + queue.size());
 
 
 
