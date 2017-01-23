@@ -3,9 +3,9 @@ package com.company;
 import java.util.*;
 
 /**
- * Created by ryan on 1/22/17.
+ * Created by ryan on 1/23/17.
  */
-public class AStar2 {
+public class AStar3 {
 
 
     int[] initial;
@@ -13,7 +13,7 @@ public class AStar2 {
     Node goal;
     int totalCost = 0;
 
-    public AStar2(int[] initial, int[] goal){
+    public AStar3(int[] initial, int[] goal){
         this.initial = initial;
         this.init = new Node(initial);
         this.goal = new Node(goal);
@@ -47,7 +47,9 @@ public class AStar2 {
         }
     }
 
-    //PRETTY PRINT STATS
+
+
+    //PRETTY PRINT STATS/META INFO
     public void printStats(Node item, int totalVisited, int space){
         Node current = item;
         Stack<Node> path = new Stack<Node>();
@@ -61,35 +63,36 @@ public class AStar2 {
             current = path.pop();
             totalCost = totalCost + current.getPathCost();
         }
-        System.out.format("%5s%14d%12d%12d%12d", "A*2", current.getDepth(), totalCost, totalVisited, space);
+        System.out.format("%5s%14d%12d%12d%12d", "A*3", current.getDepth(), totalCost, totalVisited, space);
         System.out.println();
     }
 
 
 
 
-    //RUN A*2 ON THE TREE AS IT BUILDS USING MANHATTAN DISTANCE + COST
+    //RUN A*3 ON TREE AS IT BUILDS. USE MANHATTAN DISTANCE + PATH COST + MISPLACED TILE COUNT
     public void run(){
         int space = 0;
         Set<State> visited = new HashSet<>();
         PriorityQueue<Node> queue = new PriorityQueue<Node>(new Comparator<Node>() {
             @Override
             public int compare(Node n1, Node n2) {
-                return Integer.compare(n1.getAStar2Heuristic(), n2.getAStar2Heuristic());
+                return Integer.compare(n1.getAStar3Heuristic(), n2.getAStar3Heuristic());
             }
         });
         Node current = new Node(initial);
         queue.add(current);
 
+
         while(queue.size()!=0){
             current = queue.poll();
             if(current.getCurrentState().isGoal()){
                 printStats(current, visited.size(), space);
-                printPath(current);
+                //printPath(current);
                 return;
             }
-
             visited.add(current.getCurrentState());
+
 
             ArrayList<Node> children = current.generateSuccessors();
             for(int i=0;i<children.size();i++){
@@ -100,19 +103,30 @@ public class AStar2 {
                     if(child.getCurrentState().isGoal()){
                         current = child;
                         printStats(current, visited.size(), space);
-                        printPath(current);
+                        //printPath(current);
                         return;
                     }
                     child.setPathCost(child.getParent().getPathCost());
                     queue.add(child);
                 }
                 else if(frontierContains){
+
                     queue.remove(child);
                     queue.add(child);
+
                 }
             }
 
             if(space < queue.size()){ space = queue.size();}
+
+
+
+
+
+
+
         }
+
+
     }
 }

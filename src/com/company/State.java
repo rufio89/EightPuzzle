@@ -7,64 +7,69 @@ import java.util.Arrays;
  * Created by ryan on 1/8/17.
  */
 public class State {
-    private int[][]currentState;
+    private int[][] currentState;
     private int iHole;
     private int jHole;
-    private int[] goalState = {1,2,3,8,0,4,7,6,5};
+    private int[] goalState = {1, 2, 3, 8, 0, 4, 7, 6, 5};
     private int tileMoved;
 
-    public State(int[] state){
+    public State(int[] state) {
         this.currentState = generateBoard(state);
-        getHole();
+        setHole();
     }
 
-    public State(int[][] state){
+    public State(int[][] state) {
         this.currentState = state;
-        getHole();
+        setHole();
     }
 
-    public int[][]  generateBoard(int[] initial){
-        int dimension = (int)Math.sqrt(initial.length);
+    //CREATES A BOARD FROM A ONE-DIMENSIONAL ARRAY
+    public int[][] generateBoard(int[] initial) {
+        int dimension = (int) Math.sqrt(initial.length);
         int[][] result = new int[dimension][dimension];
         int counter = 0;
-        for(int i=0;i<dimension;i++){
-            for(int j=0;j<dimension;j++){
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
                 result[i][j] = initial[counter];
-                //System.out.print(result[i][j] + " ");
                 counter++;
             }
-            //System.out.println();
         }
 
         return result;
     }
 
-    public int[][] getCurrentState(){
+    //GETS THE CURRENT BOARD STATE AS A 2-DIMENSIONAL ARRAY
+    public int[][] getCurrentState() {
         int[][] current = new int[currentState.length][currentState.length];
-        for(int i=0;i<currentState.length;i++){
-            for(int j=0;j<currentState.length;j++){
+        for (int i = 0; i < currentState.length; i++) {
+            for (int j = 0; j < currentState.length; j++) {
                 current[i][j] = currentState[i][j];
             }
         }
         return current;
     }
 
-    public void setCurrentState(int i, int j, int newValue){
+    //SETS THE CURRENT STATE BASED ON VALUES PASSED IN. USED IN SUCCESSOR FUNCTION IN NODE CLASS
+    public void setCurrentState(int i, int j, int newValue) {
         this.currentState[i][j] = newValue;
     }
 
-    public void setTileMoved(int tile){
+    //SETS THE VALUE OF THE TILE THAT IS MOVED TO USE AS A COST FOR THE PATH-COST
+    public void setTileMoved(int tile) {
         this.tileMoved = tile;
     }
 
-    public int getTileMoved(){
+    //GETTER FOR THE NUMBER OF THE TILE MOVED
+    public int getTileMoved() {
         return this.tileMoved;
     }
 
-    public void printCurrentState(){
+
+    //PRETTY PRINT ONE-D ARRAY
+    public void printCurrentState() {
         int counter = 0;
-        for(int i=0;i<currentState.length;i++){
-            for(int j=0;j<currentState.length;j++){
+        for (int i = 0; i < currentState.length; i++) {
+            for (int j = 0; j < currentState.length; j++) {
                 System.out.print(currentState[i][j] + " ");
                 counter++;
             }
@@ -73,12 +78,13 @@ public class State {
         System.out.println();
     }
 
+    //OVERRIDE TOSTRING FOR USE IN CHECKING VISITED NODES
     @Override
-    public String toString(){
+    public String toString() {
         int counter = 0;
         StringBuilder sb = new StringBuilder();
-        for(int i=0;i<currentState.length;i++){
-            for(int j=0;j<currentState.length;j++){
+        for (int i = 0; i < currentState.length; i++) {
+            for (int j = 0; j < currentState.length; j++) {
                 sb.append(currentState[i][j] + " ");
                 counter++;
             }
@@ -86,23 +92,23 @@ public class State {
         return sb.toString();
     }
 
-
+    //OVERRIDE EQUALS FOR USE IN CHECKING VISISTED NODES
     public boolean equals(Object o) {
-        if (Arrays.deepEquals(this.getCurrentState(),((State)o).getCurrentState())) return true;
+        if (Arrays.deepEquals(this.getCurrentState(), ((State) o).getCurrentState())) return true;
         else return false;
     }
 
-    public int hashCode(){
+    //OVERRIDE HASHCODE FOR USE IN CHECKING VISISTED NODES
+    public int hashCode() {
         return this.toString().hashCode();
     }
 
 
-
-
-    public void getHole(){
-        for(int i=0;i<currentState.length;i++){
-            for(int j=0;j<currentState.length;j++){
-                if(currentState[i][j]==0){
+    //SET THE "SPACE" ON THE BOARD
+    public void setHole() {
+        for (int i = 0; i < currentState.length; i++) {
+            for (int j = 0; j < currentState.length; j++) {
+                if (currentState[i][j] == 0) {
                     this.iHole = i;
                     this.jHole = j;
                     break;
@@ -111,27 +117,29 @@ public class State {
         }
     }
 
-    public int getiHole(){
+    //RETRIEVE THE "I" VALUE OF THE "SPACE" OR 0 VALUE ON THE BOARD
+    public int getiHole() {
         return this.iHole;
     }
 
-    public int getjHole(){
+    //RETRIEVE THE "J" VALUE OF THE "SPACE" OR 0 VALUE ON THE BOARD
+    public int getjHole() {
         return this.jHole;
     }
 
-    public boolean isGoal(){
+    //CHECK TO SEE IF THE BOARD IS A GOAL STATE
+    public boolean isGoal() {
         int counter = 0;
-        for(int i=0;i<currentState.length;i++){
-            for(int j=0;j<currentState.length;j++){
-                    if(currentState[i][j]!=goalState[counter]) {
-                        return false;
-                    }
+        for (int i = 0; i < currentState.length; i++) {
+            for (int j = 0; j < currentState.length; j++) {
+                if (currentState[i][j] != goalState[counter]) {
+                    return false;
+                }
                 counter++;
             }
         }
         return true;
     }
-
 
 
 }

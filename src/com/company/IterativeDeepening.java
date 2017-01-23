@@ -13,74 +13,80 @@ public class IterativeDeepening {
     Node goal;
     int totalCost = 0;
 
-    public IterativeDeepening(int[] initial, int[] goal){
+    public IterativeDeepening(int[] initial, int[] goal) {
         this.initial = initial;
         this.init = new Node(initial);
         this.goal = new Node(goal);
     }
 
 
-
-
-    public void printPath(Node item, int totalVisited){
+    //PRETTY PRINT PATH
+    public void printPath(Node item) {
         Node current = item;
         Stack<Node> path = new Stack<Node>();
 
-        while(current.getParent()!=null){
+        while (current.getParent() != null) {
             path.push(current);
             current = current.getParent();
         }
 
-//        init.getCurrentState().printCurrentState();
-//        System.out.println("  |  ");
-//        System.out.println("  |  ");
-//        System.out.println("  V  ");
-        while(!path.isEmpty()){
+        init.getCurrentState().printCurrentState();
+        System.out.println("  |  ");
+        System.out.println("  |  ");
+        System.out.println("  V  ");
+        while (!path.isEmpty()) {
             current = path.pop();
             totalCost = totalCost + current.getPathCost();
+            System.out.println("ACTION: " + current.getAction() + ", Cost: " + current.getPathCost() + ", Total Cost:" + totalCost);
+            current.getCurrentState().printCurrentState();
 
-            //System.out.println("ACTION: "  +current.getAction() + ", Cost: " + current.getPathCost() + ", Total Cost:" + totalCost + ", Depth: " + current.getDepth());
-            //current.getCurrentState().printCurrentState();
-            if(path.size()>0) {
-//                System.out.println("  |  ");
-//                System.out.println("  |  ");
-//                System.out.println("  V  ");
+            if (path.size() > 0) {
+                System.out.println("  |  ");
+                System.out.println("  |  ");
+                System.out.println("  V  ");
             }
         }
-        System.out.println("Iterative Deepening Search -> Path Cost: " + totalCost + ", Depth: " + current.getDepth()  + ", Nodes Visited: " + totalVisited );
     }
 
-    //CHECKS TO SEE IF THE VISITED LIST CONTAINS THE BOARD YOU PASS IN
-    public boolean containsBoard(Node n, LinkedList<Node> list){
-        for(int i=1;i<list.size();i++){
-            if(list.get(i).equals(n)) return true;
+
+    //PRETTY PRINT STATS/META INFO
+    public void printStats(Node item, int totalVisited, int space) {
+        Node current = item;
+        Stack<Node> path = new Stack<Node>();
+
+        while (current.getParent() != null) {
+            path.push(current);
+            current = current.getParent();
         }
-        return false;
+
+        while (!path.isEmpty()) {
+            current = path.pop();
+            totalCost = totalCost + current.getPathCost();
+        }
+        System.out.format("%5s%14d%12d%12d%12d", "IDS", current.getDepth(), totalCost, totalVisited, space);
+        System.out.println();
     }
 
 
-
-
-
-    public void run(){
+    //LOOP THROUGH ALL OF THE DEPTHS AND SEND TO FUNCTION BELOW TO RUN DFS AT EACH LEVEL
+    public void run() {
         int depth = 0;
-        Node current = new Node(initial);
-
         boolean isFound = false;
-        int totalVisited = 0;
-        while(!isFound){
+        while (!isFound) {
             isFound = runDFS(depth);
             depth++;
         }
     }
 
-    //RUNS DFS ON THE TREE AS IT BUILDS
+    //RUNS DFS ON THE TREE AS IT BUILDS ITERATIVELY. PASS IN DEPTHS IN THE LOOPING FUNCTION ABOVE
     public boolean runDFS(int depth) {
+        int space = 0;
         Set<State> visited = new HashSet<State>();
         LinkedList<Node> queue = new LinkedList<Node>();
         Node current = new Node(initial);
         if (current.getCurrentState().isGoal()) {
-            printPath(current, visited.size());
+            printStats(current, visited.size(), space);
+            printPath(current);
             return true;
         }
         queue.addFirst(current);
@@ -90,31 +96,34 @@ public class IterativeDeepening {
         }
 
 
-        while (queue.size()!=0 || current.getDepth()==depth) {
+        while (queue.size() != 0 || current.getDepth() == depth) {
             current = queue.poll();
             visited.add(current.getCurrentState());
 
-                ArrayList<Node> children = current.generateSuccessors();
-                for (int i = 0; i < children.size(); i++) {
-                    Node child = children.get(i);
-                    boolean contains = visited.contains(child.getCurrentState());
+            ArrayList<Node> children = current.generateSuccessors();
+            for (int i = 0; i < children.size(); i++) {
+                Node child = children.get(i);
+                boolean contains = visited.contains(child.getCurrentState());
 
-                    if (child.getCurrentState().isGoal()) {
-                        current = child;
-                        printPath(current, visited.size());
-                        return true;
-                    }
-                    if (!contains && child.getDepth() < depth) {
-                        queue.addFirst(child);
-                    }
+                if (child.getCurrentState().isGoal()) {
+                    current = child;
+                    printStats(current, visited.size(), space);
+                    printPath(current);
+                    return true;
                 }
-            
-
-
+                if (!contains && child.getDepth() < depth) {
+                    queue.addFirst(child);
+                }
             }
 
+            if (queue.size() > space) {
+                space = queue.size();
+            }
 
-            return false;
         }
+
+
+        return false;
+    }
 
 }

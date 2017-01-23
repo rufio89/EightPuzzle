@@ -43,6 +43,10 @@ public class Solver {
             AStar2 as2 = new AStar2(initial, goal);
             as2.run();
         }
+        if(alg=="a*3"){
+            AStar3 as3 = new AStar3(initial, goal);
+            as3.run();
+        }
 
 
 
