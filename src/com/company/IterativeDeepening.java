@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created by ryan on 1/21/17.
@@ -67,37 +65,56 @@ public class IterativeDeepening {
     public void run(){
         int depth = 0;
         Node current = new Node(initial);
+
         boolean isFound = false;
         int totalVisited = 0;
         while(!isFound){
-            isFound = depthLimitedSearch(current, depth, totalVisited);
+            isFound = runDFS(depth);
             depth++;
         }
     }
 
-    public boolean depthLimitedSearch(Node current, int limit, int totalVisited){
-        boolean result = false;
-        result = recursiveDLS(current,limit, totalVisited);
-        return result;
-    }
-
-    public boolean recursiveDLS(Node current, int limit, int totalVisited){
-        boolean result = false;
-        if(current.getCurrentState().isGoal()){
-            printPath(current, totalVisited);
+    //RUNS DFS ON THE TREE AS IT BUILDS
+    public boolean runDFS(int depth) {
+        Set<State> visited = new HashSet<State>();
+        LinkedList<Node> queue = new LinkedList<Node>();
+        Node current = new Node(initial);
+        if (current.getCurrentState().isGoal()) {
+            printPath(current, visited.size());
             return true;
         }
-        else if(limit==0) return false;
-        else{
-            ArrayList<Node> children = current.generateSuccessors();
-            for(int i=0;i<children.size();i++){
-                Node child = children.get(i);
-                result = recursiveDLS(child, limit-1, totalVisited = totalVisited+ children.size());
-                if(result) return true;
+        queue.addFirst(current);
+
+        if (depth == 0) {
+            return false;
+        }
+
+
+        while (queue.size()!=0 || current.getDepth()==depth) {
+            current = queue.poll();
+            visited.add(current.getCurrentState());
+
+                ArrayList<Node> children = current.generateSuccessors();
+                for (int i = 0; i < children.size(); i++) {
+                    Node child = children.get(i);
+                    boolean contains = visited.contains(child.getCurrentState());
+
+                    if (child.getCurrentState().isGoal()) {
+                        current = child;
+                        printPath(current, visited.size());
+                        return true;
+                    }
+                    if (!contains && child.getDepth() < depth) {
+                        queue.addFirst(child);
+                    }
+                }
+            
+
 
             }
 
+
+            return false;
         }
-        return result;
-    }
+
 }

@@ -2,27 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50f7f796-2bda-47f1-b678-c80228792ea0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/company/AStar1.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/company/AStar2.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/company/BestFirstSearch.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/company/PathCostComparator.java" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/HashNode.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/HashTable.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/BreadthFirst.class" afterPath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/BreadthFirst.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/DepthFirst.class" afterPath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/DepthFirst.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/IterativeDeepening.class" afterPath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/IterativeDeepening.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/Main.class" afterPath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/Node.class" afterPath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/Node.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/Solver.class" afterPath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/Solver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/UniformCostSearch.class" afterPath="$PROJECT_DIR$/out/production/EightPuzzle/com/company/UniformCostSearch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/BreadthFirst.java" afterPath="$PROJECT_DIR$/src/com/company/BreadthFirst.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/DepthFirst.java" afterPath="$PROJECT_DIR$/src/com/company/DepthFirst.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/IterativeDeepening.java" afterPath="$PROJECT_DIR$/src/com/company/IterativeDeepening.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Main.java" afterPath="$PROJECT_DIR$/src/com/company/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Node.java" afterPath="$PROJECT_DIR$/src/com/company/Node.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/Solver.java" afterPath="$PROJECT_DIR$/src/com/company/Solver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/UniformCostSearch.java" afterPath="$PROJECT_DIR$/src/com/company/UniformCostSearch.java" />
     </list>
     <ignored path="EightPuzzle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="27" selection-end-column="58" />
+            <state relative-caret-position="288">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="18" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -66,20 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PathCostComparator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/PathCostComparator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/Node.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
+            <state relative-caret-position="2807">
               <caret line="207" column="23" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -98,11 +71,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="DepthFirst.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/DepthFirst.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="55" column="23" selection-start-line="52" selection-start-column="1" selection-end-line="95" selection-end-column="5" />
+              <folding>
+                <element signature="e#1594#1601#0" expanded="true" />
+                <element signature="e#1652#1658#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="BreadthFirst.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/BreadthFirst.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-410">
-              <caret line="47" column="132" selection-start-line="47" selection-start-column="111" selection-end-line="47" selection-end-column="148" />
+            <state relative-caret-position="130">
+              <caret line="74" column="19" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1626#1633#0" expanded="true" />
@@ -160,13 +146,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IterativeDeepening.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IterativeDeepening.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/IterativeDeepening.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="94" column="98" selection-start-line="94" selection-start-column="98" selection-end-line="94" selection-end-column="98" />
+            <state relative-caret-position="297">
+              <caret line="110" column="12" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#2158#2165#0" expanded="true" />
+                <element signature="e#2216#2222#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -198,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/com/company/State.java" />
         <option value="$PROJECT_DIR$/src/com/company/BreadthFirst.java" />
         <option value="$PROJECT_DIR$/src/com/company/DepthFirst.java" />
-        <option value="$PROJECT_DIR$/src/com/company/IterativeDeepening.java" />
         <option value="$PROJECT_DIR$/src/com/company/PathCostComparator.java" />
         <option value="$PROJECT_DIR$/src/com/company/UniformCostSearch.java" />
         <option value="$PROJECT_DIR$/src/com/company/BestFirstSearch.java" />
@@ -207,6 +193,7 @@
         <option value="$PROJECT_DIR$/src/com/company/Solver.java" />
         <option value="$PROJECT_DIR$/src/com/company/AStar2.java" />
         <option value="$PROJECT_DIR$/src/com/company/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/company/IterativeDeepening.java" />
       </list>
     </option>
   </component>
@@ -610,7 +597,7 @@
       <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15154749" sideWeight="0.5067568" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3940043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3940043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -694,8 +681,14 @@
           <properties />
           <option name="timeStamp" value="42" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/IterativeDeepening.java</url>
+          <line>66</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="43" />
+      <option name="time" value="44" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1149,27 +1142,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/DepthFirst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="47" column="146" selection-start-line="47" selection-start-column="146" selection-end-line="47" selection-end-column="146" />
-          <folding>
-            <element signature="e#1594#1601#0" expanded="true" />
-            <element signature="e#1652#1658#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/IterativeDeepening.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="94" column="98" selection-start-line="94" selection-start-column="98" selection-end-line="94" selection-end-column="98" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/PathCostComparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1184,26 +1156,6 @@
           <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
           <folding>
             <element signature="e#1626#1632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="207" column="23" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1131#1132#0" expanded="true" />
-            <element signature="e#6270#6271#0" expanded="true" />
-            <element signature="e#6332#6333#0" expanded="true" />
-            <element signature="e#6370#6371#0" expanded="true" />
-            <element signature="e#6431#6432#0" expanded="true" />
-            <element signature="e#6527#6528#0" expanded="true" />
-            <element signature="e#6563#6564#0" expanded="true" />
-            <element signature="e#6612#6613#0" expanded="true" />
-            <element signature="e#6674#6675#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1228,28 +1180,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/UniformCostSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="90" column="22" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="71" />
-          <folding>
-            <element signature="e#1691#1697#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/BreadthFirst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-410">
-          <caret line="47" column="132" selection-start-line="47" selection-start-column="111" selection-end-line="47" selection-end-column="148" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1626#1633#0" expanded="true" />
-            <element signature="e#1679#1685#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/AStar2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
@@ -1260,11 +1190,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/BreadthFirst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="74" column="19" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1626#1633#0" expanded="true" />
+            <element signature="e#1679#1685#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/UniformCostSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="90" column="22" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="71" />
+          <folding>
+            <element signature="e#1691#1697#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/DepthFirst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="55" column="23" selection-start-line="52" selection-start-column="1" selection-end-line="95" selection-end-column="5" />
+          <folding>
+            <element signature="e#1594#1601#0" expanded="true" />
+            <element signature="e#1652#1658#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2807">
+          <caret line="207" column="23" selection-start-line="207" selection-start-column="23" selection-end-line="207" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1091#1092#0" expanded="true" />
+            <element signature="e#1131#1132#0" expanded="true" />
+            <element signature="e#6270#6271#0" expanded="true" />
+            <element signature="e#6332#6333#0" expanded="true" />
+            <element signature="e#6370#6371#0" expanded="true" />
+            <element signature="e#6431#6432#0" expanded="true" />
+            <element signature="e#6527#6528#0" expanded="true" />
+            <element signature="e#6563#6564#0" expanded="true" />
+            <element signature="e#6612#6613#0" expanded="true" />
+            <element signature="e#6674#6675#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="27" selection-end-column="58" />
+        <state relative-caret-position="288">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="18" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/IterativeDeepening.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="110" column="12" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
+          <folding>
+            <element signature="e#2158#2165#0" expanded="true" />
+            <element signature="e#2216#2222#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
