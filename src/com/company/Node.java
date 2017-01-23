@@ -2,17 +2,21 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Created by ryan on 1/8/17.
  */
-public class Node implements Comparable<Node>{
+public class Node{
     private Node parent = null;
     private State currentState;
     private String action;
     private int depth;
     private int pathCost;
     private boolean expanded;
+    int[][] goal = new int[][] {{1,2,3},{8,0,4}, {7,6,5}};
+    int misplacedTileCount = 0;
+    int manhattanDistance = 0;
 
 
     public Node(Node parent, State state, String action, int depth, boolean expanded, int pathCost){
@@ -22,13 +26,16 @@ public class Node implements Comparable<Node>{
         this.depth = depth;
         this.expanded = expanded;
         this.pathCost = pathCost;
+        setMisplacedTileCount();
+        setManhattanDistance();
     }
 
     public Node(int[] state){
 
         this.currentState = new State(state);
         this.depth = 0;
-
+        setMisplacedTileCount();
+        setManhattanDistance();
     }
 
     public Node getParent(){
@@ -118,8 +125,89 @@ public class Node implements Comparable<Node>{
     }
 
 
+    public void setMisplacedTileCount(){
+        int wrongPosCount = 0;
+        for(int i=0;i<currentState.getCurrentState().length;i++){
+            for(int j=0;j<currentState.getCurrentState().length;j++){
+                if(currentState.getCurrentState()[i][j] != goal[i][j]) wrongPosCount++;
+            }
+        }
+        this.misplacedTileCount = wrongPosCount;
+    }
 
+    public int getSum(int i, int j, int x, int y){
+        int sum, horizDiff, vertDiff;
+        if(i>x)horizDiff = i-x;
+        else horizDiff = x-i;
+        if(j>y) vertDiff = j-y;
+        else vertDiff = y-j;
+        sum = vertDiff + horizDiff;
+        return sum;
+    }
 
+    public int calculateManhattanSum(int i, int j, int value){
+        int x, y, sum=0;
+        if(value== 0){
+            x =1;y=1;
+            sum = getSum(i,j,x,y);
+        }
+        if(value== 1){
+            x=0;y=0;
+            sum = getSum(i,j,x,y);
+        }
+        if(value== 2){
+            x=0;y=1;
+            sum = getSum(i,j,x,y);
+        }
+        if(value== 3){
+            x=0;y=2;
+            sum = getSum(i,j,x,y);
+        }
+        if(value== 4){
+            x=1;y=2;
+            sum = getSum(i,j,x,y);
+        }
+        if(value== 5){
+            x=2;y=2;
+            sum = getSum(i,j,x,y);
+        }
+        if(value== 6){
+            x=2;y=1;
+            sum = getSum(i,j,x,y);
+        }
+        if(value== 7){
+            x=2;y=0;
+            sum = getSum(i,j,x,y);
+        }
+        if(value== 8){
+            x=1;y=0;
+            sum = getSum(i,j,x,y);
+        }
+        return sum;
+    }
+
+    public void setManhattanDistance(){
+        int sum = 0;
+        for(int i=0;i<currentState.getCurrentState().length;i++){
+            for(int j=0;j<currentState.getCurrentState().length;j++){
+                if(currentState.getCurrentState()[i][j] != goal[i][j])
+                  sum += calculateManhattanSum(i,j, currentState.getCurrentState()[i][j]);
+            }
+        }
+        this.manhattanDistance = sum;
+    }
+
+    public int getManhattanDistance(){ return this.manhattanDistance;}
+
+    public int getMisplacedTileCount(){ return this.misplacedTileCount;}
+
+    public int getAStar1Heuristic(){
+        return this.misplacedTileCount + this.pathCost;
+    }
+
+    public int getAStar2Heuristic(){
+        return this.manhattanDistance + this.pathCost;
+    }
     public String getAction(){
         return this.action;
     }
@@ -127,19 +215,15 @@ public class Node implements Comparable<Node>{
     public int getPathCost(){
         return this.pathCost;
     }
+    public void setPathCost(int parentPathCost){
+        this.pathCost = this.pathCost + parentPathCost;
+    }
 
     public int getDepth(){
         return this.depth;
     }
 
-    public boolean equals(Node n){
-        return this.getCurrentState().equals(n.getCurrentState());
-    }
 
-    public int compareTo(Node n){
-        if(this.equals(n)) return 0;
-        else if(this.getPathCost() > n.getPathCost()) return 1;
-        else return -1;
-    }
+
 
 }

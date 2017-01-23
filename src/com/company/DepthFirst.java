@@ -21,7 +21,7 @@ public class DepthFirst {
 
 
 
-    public void printPath(Node item){
+    public void printPath(Node item, int totalVisited){
         Node current = item;
         Stack<Node> path = new Stack<Node>();
 
@@ -30,22 +30,22 @@ public class DepthFirst {
             current = current.getParent();
         }
 
-        init.getCurrentState().printCurrentState();
-        System.out.println("  |  ");
-        System.out.println("  |  ");
-        System.out.println("  V  ");
+//        init.getCurrentState().printCurrentState();
+//        System.out.println("  |  ");
+//        System.out.println("  |  ");
+//        System.out.println("  V  ");
         while(!path.isEmpty()){
             current = path.pop();
             totalCost = totalCost + current.getPathCost();
-            System.out.println("ACTION: "  +current.getAction() + ", Cost: " + current.getPathCost() + ", Total Cost:" + totalCost + ", Depth: " + current.getDepth());
-            current.getCurrentState().printCurrentState();
+            //System.out.println("ACTION: "  +current.getAction() + ", Cost: " + current.getPathCost() + ", Total Cost:" + totalCost + ", Depth: " + current.getDepth());
+            //current.getCurrentState().printCurrentState();
             if(path.size()>0) {
-                System.out.println("  |  ");
-                System.out.println("  |  ");
-                System.out.println("  V  ");
+//                System.out.println("  |  ");
+//                System.out.println("  |  ");
+//                System.out.println("  V  ");
             }
         }
-        System.out.println("Path Cost: " + totalCost);
+        System.out.println("Depth First Search -> Path Cost: " + totalCost + ", Depth: " + current.getDepth() + ", Nodes Visited: " + totalVisited);
     }
 
 
@@ -56,8 +56,7 @@ public class DepthFirst {
         LinkedList<Node> queue = new LinkedList<Node>();
         Node current = new Node(initial);
         if(current.getCurrentState().isGoal()){
-            System.out.println("FOUND");
-            printPath(current);
+            printPath(current, visited.size());
             return;
         }
         queue.addFirst(current);
@@ -75,9 +74,8 @@ public class DepthFirst {
                 //System.out.println(contains);
                 if(!contains){
                     if(child.getCurrentState().isGoal()){
-                        System.out.println("FOUND");
                         current = child;
-                        printPath(current);
+                        printPath(current, visited.size());
                         return;
                     }
                     queue.addFirst(child);
@@ -85,7 +83,7 @@ public class DepthFirst {
             }
 
 
-            System.out.println("QUEUE: "  + queue.size());
+            //System.out.println("QUEUE: "  + queue.size());
 
 
 

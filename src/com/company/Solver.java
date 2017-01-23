@@ -31,6 +31,21 @@ public class Solver {
             ucs.run();
         }
 
+        if(alg=="bestFS"){
+            BestFirstSearch bestFS = new BestFirstSearch(initial, goal);
+            bestFS.run();
+        }
+        if(alg=="a*1"){
+            AStar1 as1 = new AStar1(initial, goal);
+            as1.run();
+        }
+        if(alg=="a*2"){
+            AStar2 as2 = new AStar2(initial, goal);
+            as2.run();
+        }
+
+
+
 
     }
 
